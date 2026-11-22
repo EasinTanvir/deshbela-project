@@ -1,0 +1,16 @@
+@theme {
+  --color-home-ticker-label: #b3122a;
+  --color-home-breaking: #b3122a;
+  --color-home-trending-num: #c4c4c4;
+
+  --animate-home-ticker: home-ticker 50s linear infinite;
+
+  @keyframes home-ticker {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

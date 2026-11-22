@@ -25,6 +25,38 @@ npm run dev
 
 Open http://localhost:3000 in the browser.
 
+## Folder structure
+
+```
+src/
+  app/                       routes (each page.js only imports its page component)
+  assets/images/news/        sample news photos
+  constants/images.js        imports every image and exports it with a label (NEWS_IMAGES)
+  components/
+    pages/home/              Home.jsx and every section of the home page
+    common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot ...
+    layout/                  Header, Footer, MobileMenu, NewsletterForm
+  data/                      sample data (until the database is ready)
+  lib/                       data functions (homeData.js, siteData.js) and helpers
+  styles/
+    globals.css              main stylesheet
+    theme.css                shared colours and fonts
+    pages/home.css           home page colours and ticker animation
+```
+
+Tailwind classes are written directly in each component. Colours are not hard-coded: each one is a named
+variable in `theme.css` (shared) or `styles/pages/<page>.css` (one page). For example
+`--color-home-breaking` gives the class `text-home-breaking`.
+
+Fonts: Source Serif 4 for headlines and Source Sans 3 for body text. The site uses a light theme only.
+The full set of conventions is in `CLAUDE.md`.
+
+## Pages built so far
+
+| Route | Page | Sections |
+|---|---|---|
+| `/` | Home (SRS 4.1) | Live news ticker, Top Stories, breaking news slider, Trending, banner ad, Featured, news by category, Video, Popular, Latest Updates |
+
 ## Users
 
 | User | What they can do |

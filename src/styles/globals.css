@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "./theme.css";
+@import "./pages/home.css";
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}

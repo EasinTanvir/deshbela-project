@@ -1,0 +1,14 @@
+@theme {
+  --color-brand: #b3122a;
+  --color-brand-dark: #8c0e21;
+
+  --color-ink: #1c1c1c;
+  --color-muted: #666666;
+
+  --color-paper: #ffffff;
+  --color-surface: #f6f5f1;
+  --color-line: #dddddd;
+
+  --font-sans: var(--font-source-sans), Arial, sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+}
