@@ -1,6 +1,7 @@
 const siteConfig = {
   name: "DESHBELA",
   tagline: "News you can trust",
+  siteUrl: "http://localhost:3000",
   description:
     "DESHBELA is an online news portal with national, international, politics, economy, sports, technology and entertainment news.",
 

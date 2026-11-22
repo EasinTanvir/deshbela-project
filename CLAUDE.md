@@ -35,7 +35,7 @@ src/
     layout/                    Header, Footer, MobileMenu, NewsletterForm (shown on every page)
   data/                        sample data (replaced by Prisma later)
   lib/<page>Data.js            data functions for one page; the only code that reads src/data
-  lib/*.js                     small helpers (formatDate, formatTime)
+  lib/*.js                     small helpers (formatDate, articleHelpers: getPublished, withCategory, sort functions)
   styles/
     globals.css                entry file: imports tailwindcss, theme.css and every pages/*.css
     theme.css                  shared colours and fonts
@@ -49,8 +49,11 @@ folder (`NewsTicker.jsx`, `BreakingSlider.jsx` ...) -> data from `src/lib/homeDa
 ## Adding a new page
 1. `src/components/pages/<page>/<Page>.jsx` and its sections in the same folder.
 2. `src/app/<route>/page.js` that imports and returns `<Page />`.
+   - Dynamic route (`[slug]`): `page.js` also exports `generateStaticParams` (Cache Components needs at least
+     one slug) and `generateMetadata`. It awaits `params` and passes `slug` to the page component, which
+     calls `notFound()` when the slug does not exist. Do not export `dynamicParams` (not allowed with Cache Components).
 3. `src/lib/<page>Data.js` for its data.
-4. `src/styles/pages/<page>.css` for its colours, then add `@import "./pages/<page>.css";` to `globals.css`.
+4. If the page has its own colours: `src/styles/pages/<page>.css`, then add `@import "./pages/<page>.css";` to `globals.css`.
 5. Reuse `components/common/` parts before writing new ones.
 
 ## Images
@@ -92,6 +95,8 @@ folder (`NewsTicker.jsx`, `BreakingSlider.jsx` ...) -> data from `src/lib/homeDa
 - Page components get the data and pass it down as props. Sections only display what they get.
 - Data functions are `async` now, so swapping to Prisma later does not change the components.
 - Components never import from `src/data/` directly. They go through `src/lib/`.
+- Junction tables of the ER diagram are their own data files (`articleAuthors.js`, `articleTags.js`).
+  `lib/` joins them.
 - Sample data uses the field names of the ER diagram (`id`, `slug`, `categoryId`, `isBreaking`,
   `breakingPriority`, `isFeatured`, `viewCount`, `publishedAt`, `metaDescription`).
 - Use simple, clear English in page text.

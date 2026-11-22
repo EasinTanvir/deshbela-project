@@ -1,6 +1,7 @@
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { getSiteConfig } from "@/lib/siteData";
 import "@/styles/globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -14,6 +15,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata = {
+  metadataBase: new URL(getSiteConfig().siteUrl),
   title: {
     default: "DESHBELA - Latest News",
     template: "%s | DESHBELA",

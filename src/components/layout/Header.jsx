@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import Container from "@/components/common/Container";
 import TodayDate from "@/components/common/TodayDate";
+import ActiveNavLinks from "@/components/layout/ActiveNavLinks";
 import MobileMenu from "@/components/layout/MobileMenu";
+import NavLinks from "@/components/layout/NavLinks";
 import { getMainCategories, getSiteConfig } from "@/lib/siteData";
 
 export default function Header() {
@@ -47,27 +50,9 @@ export default function Header() {
 
       <nav aria-label="Main menu" className="sticky top-0 z-40 hidden border-y border-ink bg-paper lg:block">
         <Container>
-          <ul className="flex items-center justify-center text-[13px] font-semibold uppercase tracking-wide">
-            <li>
-              <Link href="/" className="block px-3 py-2.5 text-brand">
-                Home
-              </Link>
-            </li>
-            {categories.map((category) => (
-              <li key={category.id}>
-                <Link href={`/category/${category.slug}`} className="block px-3 py-2.5 text-ink hover:text-brand">
-                  {category.name}
-                </Link>
-              </li>
-            ))}
-            {site.extraNavLinks.map((link) => (
-              <li key={link.href} className="border-l border-line">
-                <Link href={link.href} className="block px-3 py-2.5 text-ink hover:text-brand">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Suspense fallback={<NavLinks categories={categories} extraLinks={site.extraNavLinks} />}>
+            <ActiveNavLinks categories={categories} extraLinks={site.extraNavLinks} />
+          </Suspense>
         </Container>
       </nav>
     </>

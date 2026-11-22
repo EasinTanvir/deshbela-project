@@ -29,7 +29,7 @@ Open http://localhost:3000 in the browser.
 
 ```
 src/
-  app/                       routes (each page.js only imports its page component)
+  app/                       routes (each page.js only imports its page component; dynamic routes also list their slugs and metadata)
   assets/images/news/        sample news photos
   constants/images.js        imports every image and exports it with a label (NEWS_IMAGES)
   components/
@@ -37,7 +37,7 @@ src/
     common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot ...
     layout/                  Header, Footer, MobileMenu, NewsletterForm
   data/                      sample data (until the database is ready)
-  lib/                       data functions (homeData.js, siteData.js) and helpers
+  lib/                       data functions (homeData.js, articleData.js, categoryData.js, siteData.js) and helpers
   styles/
     globals.css              main stylesheet
     theme.css                shared colours and fonts
@@ -56,6 +56,8 @@ The full set of conventions is in `CLAUDE.md`.
 | Route | Page | Sections |
 |---|---|---|
 | `/` | Home (SRS 4.1) | Live news ticker, Top Stories, breaking news slider, Trending, banner ad, Featured, news by category, Video, Popular, Latest Updates |
+| `/news/[slug]` | News details (SRS 4.3, 4.6, 4.8, 4.9) | Breadcrumb, headline, authors, sponsored label, members-only notice, share links, save button, photo with caption, body, tags, reactions, comments, related news, Latest and Most Read sidebar, ads, NewsArticle schema markup |
+| `/category/[slug]` | Category (SRS 4.3) | Breadcrumb, sub-category links, lead story, more news list, Most Read in the category, ad |
 
 ## Users
 

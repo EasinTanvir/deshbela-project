@@ -1,25 +1,14 @@
-import articles from "@/data/articles";
 import categories from "@/data/categories";
 import videos from "@/data/videos";
+import {
+  getCategoryWithChildrenIds,
+  getPublished,
+  mostViewedFirst,
+  newestFirst,
+  withCategory,
+} from "@/lib/articleHelpers";
 
 const HOURS_48 = 48 * 60 * 60 * 1000;
-
-function withCategory(article) {
-  const category = categories.find((item) => item.id === article.categoryId);
-  return { ...article, category };
-}
-
-function newestFirst(a, b) {
-  return new Date(b.publishedAt) - new Date(a.publishedAt);
-}
-
-function mostViewedFirst(a, b) {
-  return b.viewCount - a.viewCount;
-}
-
-function getPublished() {
-  return articles.filter((article) => article.status === "PUBLISHED");
-}
 
 export async function getBreakingNews(limit = 5) {
   return getPublished()
@@ -73,13 +62,16 @@ export async function getCategorySections(perCategory = 4) {
 
   return categories
     .filter((category) => category.parentId === null)
-    .map((category) => ({
-      category,
-      articles: published
-        .filter((article) => article.categoryId === category.id)
-        .slice(0, perCategory)
-        .map(withCategory),
-    }));
+    .map((category) => {
+      const categoryIds = getCategoryWithChildrenIds(category.id);
+      return {
+        category,
+        articles: published
+          .filter((article) => categoryIds.includes(article.categoryId))
+          .slice(0, perCategory)
+          .map(withCategory),
+      };
+    });
 }
 
 export async function getPopular(limit = 5) {

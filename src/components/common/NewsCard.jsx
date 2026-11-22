@@ -45,6 +45,9 @@ export default function NewsCard({ article, variant = "default", showSummary = f
               {article.title}
             </Link>
           </h3>
+          {showSummary && (
+            <p className="mt-1 hidden text-sm leading-relaxed text-muted sm:block">{article.metaDescription}</p>
+          )}
           <div className="mt-1">
             <PublishedDate date={article.publishedAt} />
           </div>
