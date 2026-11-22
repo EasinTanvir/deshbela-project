@@ -103,6 +103,17 @@ folder (`NewsTicker.jsx`, `BreakingSlider.jsx` ...) -> data from `src/lib/homeDa
 - Accessibility: `alt` on images, `aria-label` on icon-only buttons, a single `h1` per page, and
   `motion-reduce:` on animations.
 
+## Progress
+- Public pages are built two at a time, in the order of the README table (Must first).
+- Done: `/` (home), `/news/[slug]` (article), `/category/[slug]` (category).
+- Next: `/tag/[slug]` and `/search`.
+- Then: author, videos, video details, live, gallery, gallery details, podcasts, membership, membership
+  result, about, contact, privacy policy, terms, advertise, editorial policy, career, custom 404.
+- Login, account, reporter and admin pages come after the public pages.
+- Until login exists, bookmark, reactions and comment buttons only show a "Log in to ..." note.
+- Tag chips, login, register and membership links point to pages that are not built yet.
+- Update this section and "Pages built so far" in `README.md` after each page.
+
 ## Commands
 - `npm run dev`: development server on http://localhost:3000
 - `npm run lint`: must show no errors

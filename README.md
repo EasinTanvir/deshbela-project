@@ -34,14 +34,17 @@ src/
   constants/images.js        imports every image and exports it with a label (NEWS_IMAGES)
   components/
     pages/home/              Home.jsx and every section of the home page
-    common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot ...
-    layout/                  Header, Footer, MobileMenu, NewsletterForm
+    pages/article/           Article.jsx and the parts of the news details page
+    pages/category/          Category.jsx and the parts of the category page
+    common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList ...
+    layout/                  Header, NavLinks, Footer, MobileMenu, NewsletterForm
   data/                      sample data (until the database is ready)
   lib/                       data functions (homeData.js, articleData.js, categoryData.js, siteData.js) and helpers
   styles/
     globals.css              main stylesheet
     theme.css                shared colours and fonts
     pages/home.css           home page colours and ticker animation
+    pages/article.css        news details colours (sponsored label, members-only box)
 ```
 
 Tailwind classes are written directly in each component. Colours are not hard-coded: each one is a named
@@ -58,6 +61,9 @@ The full set of conventions is in `CLAUDE.md`.
 | `/` | Home (SRS 4.1) | Live news ticker, Top Stories, breaking news slider, Trending, banner ad, Featured, news by category, Video, Popular, Latest Updates |
 | `/news/[slug]` | News details (SRS 4.3, 4.6, 4.8, 4.9) | Breadcrumb, headline, authors, sponsored label, members-only notice, share links, save button, photo with caption, body, tags, reactions, comments, related news, Latest and Most Read sidebar, ads, NewsArticle schema markup |
 | `/category/[slug]` | Category (SRS 4.3) | Breadcrumb, sub-category links, lead story, more news list, Most Read in the category, ad |
+
+Next pages to build: `/tag/[slug]` (Tag, #4) and `/search` (Search, #6). Both are Must.
+After them, the rest of the public pages in the order of the table below.
 
 ## Users
 
