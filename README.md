@@ -40,10 +40,13 @@ src/
     pages/search/            Search.jsx, the search form and the result list
     pages/author/            Author.jsx and the parts of the reporter page
     pages/notFound/          NotFound.jsx, the 404 page
-    common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList, TagList ...
+    pages/about/             About.jsx and the newsroom list
+    pages/contact/           Contact.jsx and the contact form
+    common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList, TagList, PageBody, ContactDetails ...
     layout/                  Header, NavLinks, Footer, MobileMenu, NewsletterForm
+  actions/                   server actions (contactActions.js checks and receives the contact form)
   data/                      sample data (until the database is ready)
-  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, siteData.js) and helpers
+  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, pageData.js, siteData.js) and helpers
   styles/
     globals.css              main stylesheet
     theme.css                shared colours and fonts
@@ -71,7 +74,10 @@ The full set of conventions is in `CLAUDE.md`.
 | `/author/[slug]` | Author (SRS 4.4) | Breadcrumb, reporter name, designation and bio, story count, list of their news, Other Reporters, ad |
 | (any wrong URL) | Not found (404) | Message, search box, links to the front page and sections, Latest News |
 
-Next pages to build: `/about` (About Us, #15) and `/contact` (Contact Us, #16). Both are Must.
+| `/about` | About Us (SRS 4.13) | Page text, Our Newsroom (links to every reporter), About DESHBELA links, office details |
+| `/contact` | Contact Us (SRS 4.13, 4.10) | Page text, contact form checked on the server with a hidden spam trap field, office details, About DESHBELA links |
+
+Next pages to build: `/privacy-policy` (Privacy Policy, #17) and `/terms` (Terms and Conditions, #18). Both are Must.
 After them, the rest of the public pages in the order of the table below.
 
 ## Users

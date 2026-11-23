@@ -36,6 +36,10 @@ export async function getAuthorNews(userId) {
     .map(withCategory);
 }
 
+export async function getAllAuthors() {
+  return getAuthors();
+}
+
 export async function getOtherAuthors(userId) {
   return getAuthors().filter((author) => author.id !== userId);
 }
