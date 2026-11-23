@@ -36,10 +36,12 @@ src/
     pages/home/              Home.jsx and every section of the home page
     pages/article/           Article.jsx and the parts of the news details page
     pages/category/          Category.jsx and the parts of the category page
-    common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList ...
+    pages/tag/               Tag.jsx and the parts of the tag page
+    pages/search/            Search.jsx, the search form and the result list
+    common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList, TagList ...
     layout/                  Header, NavLinks, Footer, MobileMenu, NewsletterForm
   data/                      sample data (until the database is ready)
-  lib/                       data functions (homeData.js, articleData.js, categoryData.js, siteData.js) and helpers
+  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, siteData.js) and helpers
   styles/
     globals.css              main stylesheet
     theme.css                shared colours and fonts
@@ -61,8 +63,10 @@ The full set of conventions is in `CLAUDE.md`.
 | `/` | Home (SRS 4.1) | Live news ticker, Top Stories, breaking news slider, Trending, banner ad, Featured, news by category, Video, Popular, Latest Updates |
 | `/news/[slug]` | News details (SRS 4.3, 4.6, 4.8, 4.9) | Breadcrumb, headline, authors, sponsored label, members-only notice, share links, save button, photo with caption, body, tags, reactions, comments, related news, Latest and Most Read sidebar, ads, NewsArticle schema markup |
 | `/category/[slug]` | Category (SRS 4.3) | Breadcrumb, sub-category links, lead story, more news list, Most Read in the category, ad |
+| `/tag/[slug]` | Tag (SRS 4.2) | Breadcrumb, topic name and story count, lead story, list of the other stories, Other Topics, Most Read, ad |
+| `/search` | Search (SRS 4.4) | Keyword box, category, author and date filters, result count and list, Popular Topics, ad |
 
-Next pages to build: `/tag/[slug]` (Tag, #4) and `/search` (Search, #6). Both are Must.
+Next pages to build: `/author/[slug]` (Author, #5) and the custom 404 page (#22).
 After them, the rest of the public pages in the order of the table below.
 
 ## Users
