@@ -11,6 +11,7 @@ import {
   getCategoryWithChildrenIds,
   getPublished,
   mostViewedFirst,
+  nameToSlug,
   newestFirst,
   withCategory,
 } from "@/lib/articleHelpers";
@@ -29,7 +30,7 @@ function getAuthors(articleId) {
     .map((link) => {
       const user = users.find((item) => item.id === link.userId);
       const profile = reporterProfiles.find((item) => item.userId === link.userId);
-      return { id: user.id, name: user.name, designation: profile ? profile.designation : "" };
+      return { id: user.id, name: user.name, slug: nameToSlug(user.name), designation: profile ? profile.designation : "" };
     });
 }
 

@@ -38,10 +38,12 @@ src/
     pages/category/          Category.jsx and the parts of the category page
     pages/tag/               Tag.jsx and the parts of the tag page
     pages/search/            Search.jsx, the search form and the result list
+    pages/author/            Author.jsx and the parts of the reporter page
+    pages/notFound/          NotFound.jsx, the 404 page
     common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList, TagList ...
     layout/                  Header, NavLinks, Footer, MobileMenu, NewsletterForm
   data/                      sample data (until the database is ready)
-  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, siteData.js) and helpers
+  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, siteData.js) and helpers
   styles/
     globals.css              main stylesheet
     theme.css                shared colours and fonts
@@ -66,7 +68,10 @@ The full set of conventions is in `CLAUDE.md`.
 | `/tag/[slug]` | Tag (SRS 4.2) | Breadcrumb, topic name and story count, lead story, list of the other stories, Other Topics, Most Read, ad |
 | `/search` | Search (SRS 4.4) | Keyword box, category, author and date filters, result count and list, Popular Topics, ad |
 
-Next pages to build: `/author/[slug]` (Author, #5) and the custom 404 page (#22).
+| `/author/[slug]` | Author (SRS 4.4) | Breadcrumb, reporter name, designation and bio, story count, list of their news, Other Reporters, ad |
+| (any wrong URL) | Not found (404) | Message, search box, links to the front page and sections, Latest News |
+
+Next pages to build: `/about` (About Us, #15) and `/contact` (Contact Us, #16). Both are Must.
 After them, the rest of the public pages in the order of the table below.
 
 ## Users

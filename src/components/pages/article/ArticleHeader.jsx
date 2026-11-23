@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CategoryBadge from "@/components/common/CategoryBadge";
 import PublishedDate from "@/components/common/PublishedDate";
 import BookmarkButton from "@/components/pages/article/BookmarkButton";
@@ -33,7 +34,9 @@ export default function ArticleHeader({ article, articleUrl }) {
             {article.authors.map((author, index) => (
               <span key={author.id}>
                 {index > 0 && " and "}
-                <span className="font-semibold">{author.name}</span>
+                <Link href={`/author/${author.slug}`} className="font-semibold hover:text-brand hover:underline">
+                  {author.name}
+                </Link>
               </span>
             ))}
           </p>

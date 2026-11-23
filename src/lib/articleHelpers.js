@@ -22,3 +22,10 @@ export function getCategoryWithChildrenIds(categoryId) {
   const childIds = categories.filter((item) => item.parentId === categoryId).map((item) => item.id);
   return [categoryId, ...childIds];
 }
+
+export function nameToSlug(name) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
