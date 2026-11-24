@@ -26,8 +26,7 @@ export default function LivePlayer({ stream }) {
         </a>
       </div>
       <div className="mt-4 border-b border-line pb-5">
-        <LiveBadge />
-        <h2 className="mt-2 font-serif text-3xl font-bold leading-tight text-ink">{stream.title}</h2>
+        <h2 className="font-serif text-3xl font-bold leading-tight text-ink">{stream.title}</h2>
         <p className="mt-2 text-sm text-muted">
           Started at{" "}
           <time dateTime={stream.startsAt}>
