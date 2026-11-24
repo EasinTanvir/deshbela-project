@@ -42,16 +42,26 @@ src/
     pages/notFound/          NotFound.jsx, the 404 page
     pages/about/             About.jsx and the newsroom list
     pages/contact/           Contact.jsx and the contact form
+    pages/privacy/, terms/, editorialPolicy/, career/, advertise/   info pages built on common/InfoPageLayout
+    pages/videos/            Videos.jsx and the lead video
+    pages/videoDetails/      VideoDetails.jsx, the player and the title bar
+    pages/live/              Live.jsx, the live box, schedule and past streams
+    pages/gallery/           Gallery.jsx, the list of photo galleries
+    pages/galleryDetails/    GalleryDetails.jsx and the photo viewer
+    pages/membership/        Membership.jsx, plan cards, benefits and questions
+    pages/membershipResult/  MembershipResult.jsx and the payment result message
+    pages/podcasts/          Podcasts.jsx, the episode player and the episode list
     common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList, TagList, PageBody, ContactDetails ...
     layout/                  Header, NavLinks, Footer, MobileMenu, NewsletterForm
-  actions/                   server actions (contactActions.js checks and receives the contact form)
+  actions/                   server actions (contactActions.js and advertiseActions.js check and receive the forms)
   data/                      sample data (until the database is ready)
-  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, pageData.js, siteData.js) and helpers
+  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, pageData.js, siteData.js, advertiseData.js, videoData.js, liveData.js, galleryData.js, membershipData.js, podcastData.js) and helpers
   styles/
     globals.css              main stylesheet
     theme.css                shared colours and fonts
     pages/home.css           home page colours and ticker animation
     pages/article.css        news details colours (sponsored label, members-only box)
+    pages/live.css           live label colour and blinking animation
 ```
 
 Tailwind classes are written directly in each component. Colours are not hard-coded: each one is a named
@@ -70,15 +80,26 @@ The full set of conventions is in `CLAUDE.md`.
 | `/category/[slug]` | Category (SRS 4.3) | Breadcrumb, sub-category links, lead story, more news list, Most Read in the category, ad |
 | `/tag/[slug]` | Tag (SRS 4.2) | Breadcrumb, topic name and story count, lead story, list of the other stories, Other Topics, Most Read, ad |
 | `/search` | Search (SRS 4.4) | Keyword box, category, author and date filters, result count and list, Popular Topics, ad |
-
 | `/author/[slug]` | Author (SRS 4.4) | Breadcrumb, reporter name, designation and bio, story count, list of their news, Other Reporters, ad |
 | (any wrong URL) | Not found (404) | Message, search box, links to the front page and sections, Latest News |
-
 | `/about` | About Us (SRS 4.13) | Page text, Our Newsroom (links to every reporter), About DESHBELA links, office details |
 | `/contact` | Contact Us (SRS 4.13, 4.10) | Page text, contact form checked on the server with a hidden spam trap field, office details, About DESHBELA links |
 
-Next pages to build: `/privacy-policy` (Privacy Policy, #17) and `/terms` (Terms and Conditions, #18). Both are Must.
-After them, the rest of the public pages in the order of the table below.
+| `/privacy-policy` | Privacy Policy (SRS 4.13) | Page text with last updated date, About DESHBELA links, office details |
+| `/terms` | Terms and Conditions (SRS 4.13) | Page text with last updated date, About DESHBELA links, office details |
+| `/editorial-policy` | Editorial Policy (SRS 4.13) | Page text with last updated date, About DESHBELA links, office details |
+| `/advertise` | Advertise With Us (SRS 4.13, 4.10) | Page text, table of ad options, advertiser inquiry form (name, email, phone, message) with a hidden spam trap field |
+| `/career` | Career (SRS 4.13) | Page text, how to apply with a careers email link |
+| `/videos` | Video News (SRS 4.7) | Lead video, Up Next list, ad, More Videos grid |
+| `/videos/[slug]` | Video details (SRS 4.7) | YouTube player (or the thumbnail until the video is uploaded), category, title, date, length, share links, Latest Videos, ad, More Videos |
+| `/live` | Live (SRS 4.7) | Live stream box with a blinking LIVE label, Coming Up schedule, ad, Past Live Streams |
+| `/gallery` | Photo Gallery (SRS 4.7) | Lead gallery, second gallery, ad, More Galleries |
+| `/gallery/[slug]` | Gallery details (SRS 4.7) | Title, date, photo count, share links, photo viewer (previous and next buttons, arrow keys, thumbnails, caption and photographer), ad, More Galleries |
+| `/membership` | Membership (SRS 4.6) | Three plans with price and price per month, best value plan, What members get, Common questions |
+| `/membership/result` | Membership result (SRS 4.6) | Payment result from `?status=success\|failed\|cancelled&plan=<id>`, plan summary, next step link |
+| `/podcasts` | Podcasts (SRS 4.7) | Episode player, All Episodes list with Listen buttons, About the show, ad |
+
+All public pages are built. Next: login and register, the reader account, then the reporter and admin panels.
 
 ## Users
 
