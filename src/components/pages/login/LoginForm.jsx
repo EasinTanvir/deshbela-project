@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useActionState } from "react";
 import { logIn } from "@/actions/loginActions";
 import FormField from "@/components/common/FormField";
@@ -12,21 +11,6 @@ const fieldClass = "w-full border bg-paper px-3 py-2 text-base text-ink outline-
 export default function LoginForm() {
   const [state, formAction, pending] = useActionState(logIn, initialState);
   const { errors, values } = state;
-
-  if (state.status === "success") {
-    return (
-      <div role="status">
-        <h2 className="font-serif text-2xl font-bold text-ink">Welcome back, {values.name}</h2>
-        <p className="mt-2 text-muted">You are logged in.</p>
-        <Link
-          href="/"
-          className="mt-5 inline-block bg-brand px-6 py-2.5 text-sm font-semibold text-paper hover:bg-brand-dark"
-        >
-          Go to the front page
-        </Link>
-      </div>
-    );
-  }
 
   function fieldProps(name, keepValue = true) {
     return {

@@ -10,21 +10,6 @@ export default function VerifyForm() {
   const [state, formAction, pending] = useActionState(verifyLoginCode, initialState);
   const error = state.errors.code;
 
-  if (state.status === "verified") {
-    return (
-      <div role="status">
-        <h2 className="font-serif text-2xl font-bold text-ink">Welcome, {state.name}</h2>
-        <p className="mt-2 text-muted">The code is correct. You are logged in as {state.roleName}.</p>
-        <Link
-          href="/"
-          className="mt-5 inline-block bg-brand px-6 py-2.5 text-sm font-semibold text-paper hover:bg-brand-dark"
-        >
-          Go to the front page
-        </Link>
-      </div>
-    );
-  }
-
   if (state.status === "expired") {
     return (
       <div role="alert">

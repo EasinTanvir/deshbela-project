@@ -1,9 +1,11 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { findUserById } from "@/lib/authData";
 import { LOGIN_CODE_COOKIE, unpackLoginCode } from "@/lib/loginCode";
 import { verifyPassword } from "@/lib/passwords";
+import { createSession } from "@/lib/session";
 
 function readText(formData, name) {
   const value = formData.get(name);
@@ -33,6 +35,10 @@ export async function verifyLoginCode(previousState, formData) {
 
   cookieStore.delete({ name: LOGIN_CODE_COOKIE, path: "/login" });
   const user = await findUserById(saved.userId);
+  if (!user) {
+    return { status: "expired", errors: {} };
+  }
 
-  return { status: "verified", errors: {}, name: user ? user.name : "", roleName: user ? user.roleName : "" };
+  await createSession(user.id);
+  redirect("/account");
 }

@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { findUserByEmail } from "@/lib/authData";
 import { LOGIN_CODE_COOKIE, LOGIN_CODE_MINUTES, packLoginCode } from "@/lib/loginCode";
 import { hashPassword, verifyPassword } from "@/lib/passwords";
+import { createSession } from "@/lib/session";
 
 const WRONG_LOGIN = "The email or password is not correct.";
 
@@ -56,5 +57,6 @@ export async function logIn(previousState, formData) {
     redirect("/login/verify");
   }
 
-  return { status: "success", errors: {}, values: { name: user.name } };
+  await createSession(user.id);
+  redirect("/account");
 }
