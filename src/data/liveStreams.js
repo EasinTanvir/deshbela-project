@@ -1,0 +1,60 @@
+const liveStreams = [
+  {
+    id: "live-1",
+    title: "Parliament budget session: live from the House",
+    streamUrl: "https://www.youtube.com/@deshbela/live",
+    status: "LIVE",
+    startsAt: "2026-11-25T15:00:00+06:00",
+    endsAt: null,
+  },
+  {
+    id: "live-2",
+    title: "Evening news bulletin",
+    streamUrl: "https://www.youtube.com/@deshbela/live",
+    status: "SCHEDULED",
+    startsAt: "2026-11-25T20:00:00+06:00",
+    endsAt: "2026-11-25T20:30:00+06:00",
+  },
+  {
+    id: "live-3",
+    title: "Cricket talk: preview of the fourth match",
+    streamUrl: "https://www.youtube.com/@deshbela/live",
+    status: "SCHEDULED",
+    startsAt: "2026-11-26T19:00:00+06:00",
+    endsAt: "2026-11-26T20:00:00+06:00",
+  },
+  {
+    id: "live-4",
+    title: "Business hour: interest rates and your savings",
+    streamUrl: "https://www.youtube.com/@deshbela/live",
+    status: "SCHEDULED",
+    startsAt: "2026-11-27T18:00:00+06:00",
+    endsAt: "2026-11-27T19:00:00+06:00",
+  },
+  {
+    id: "live-5",
+    title: "Climate summit closing press conference",
+    streamUrl: "https://www.youtube.com/@deshbela/videos",
+    status: "ENDED",
+    startsAt: "2026-11-23T17:00:00+06:00",
+    endsAt: "2026-11-23T18:10:00+06:00",
+  },
+  {
+    id: "live-6",
+    title: "School results day: questions from parents answered",
+    streamUrl: "https://www.youtube.com/@deshbela/videos",
+    status: "ENDED",
+    startsAt: "2026-11-21T11:00:00+06:00",
+    endsAt: "2026-11-21T12:00:00+06:00",
+  },
+  {
+    id: "live-7",
+    title: "Election commission press briefing",
+    streamUrl: "https://www.youtube.com/@deshbela/videos",
+    status: "ENDED",
+    startsAt: "2026-11-19T12:00:00+06:00",
+    endsAt: "2026-11-19T12:45:00+06:00",
+  },
+];
+
+export default liveStreams;
