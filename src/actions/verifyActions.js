@@ -1,0 +1,38 @@
+"use server";
+
+import { cookies } from "next/headers";
+import { findUserById } from "@/lib/authData";
+import { LOGIN_CODE_COOKIE, unpackLoginCode } from "@/lib/loginCode";
+import { verifyPassword } from "@/lib/passwords";
+
+function readText(formData, name) {
+  const value = formData.get(name);
+  return typeof value === "string" ? value.trim() : "";
+}
+
+export async function verifyLoginCode(previousState, formData) {
+  const code = readText(formData, "code").replace(/\s/g, "");
+
+  if (readText(formData, "website") !== "") {
+    return { status: "error", errors: { code: "The code is not correct." } };
+  }
+
+  if (!/^\d{6}$/.test(code)) {
+    return { status: "error", errors: { code: "The code has 6 numbers." } };
+  }
+
+  const cookieStore = await cookies();
+  const saved = unpackLoginCode(cookieStore.get(LOGIN_CODE_COOKIE)?.value);
+  if (!saved) {
+    return { status: "expired", errors: {} };
+  }
+
+  if (!verifyPassword(code, saved.codeHash)) {
+    return { status: "error", errors: { code: "The code is not correct. Please check the email and try again." } };
+  }
+
+  cookieStore.delete({ name: LOGIN_CODE_COOKIE, path: "/login" });
+  const user = await findUserById(saved.userId);
+
+  return { status: "verified", errors: {}, name: user ? user.name : "", roleName: user ? user.roleName : "" };
+}
