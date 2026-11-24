@@ -18,6 +18,7 @@ const siteConfig = {
     { label: "Video", href: "/videos" },
     { label: "Gallery", href: "/gallery" },
     { label: "Live", href: "/live" },
+    { label: "Podcasts", href: "/podcasts" },
   ],
 
   footerLinks: [

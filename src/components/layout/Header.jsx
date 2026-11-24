@@ -17,9 +17,14 @@ export default function Header() {
         <div className="border-b border-line text-xs text-muted">
           <Container className="flex h-8 items-center justify-between">
             <TodayDate />
-            <Link href="/login" className="font-semibold text-ink hover:underline">
-              Log in
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link href="/membership" className="font-semibold text-brand hover:underline">
+                Become a member
+              </Link>
+              <Link href="/login" className="font-semibold text-ink hover:underline">
+                Log in
+              </Link>
+            </div>
           </Container>
         </div>
 
