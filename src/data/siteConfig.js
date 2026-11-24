@@ -10,6 +10,7 @@ const siteConfig = {
     phone: "+880 1700-000000",
     email: "newsroom@example.com",
     adsEmail: "ads@example.com",
+    careersEmail: "careers@example.com",
     officeHours: "Sunday to Thursday, 9:00 am to 6:00 pm",
   },
 
