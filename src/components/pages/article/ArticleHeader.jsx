@@ -2,7 +2,7 @@ import Link from "next/link";
 import CategoryBadge from "@/components/common/CategoryBadge";
 import PublishedDate from "@/components/common/PublishedDate";
 import BookmarkButton from "@/components/pages/article/BookmarkButton";
-import ShareLinks from "@/components/pages/article/ShareLinks";
+import ShareLinks from "@/components/common/ShareLinks";
 
 export default function ArticleHeader({ article, articleUrl }) {
   return (

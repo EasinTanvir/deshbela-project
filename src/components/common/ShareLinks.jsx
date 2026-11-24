@@ -1,4 +1,4 @@
-import CopyLinkButton from "@/components/pages/article/CopyLinkButton";
+import CopyLinkButton from "@/components/common/CopyLinkButton";
 
 export default function ShareLinks({ url, title }) {
   const encodedUrl = encodeURIComponent(url);
