@@ -4,7 +4,7 @@ import Container from "@/components/common/Container";
 import SectionTitle from "@/components/common/SectionTitle";
 import VideoListItem from "@/components/common/VideoListItem";
 import LeadVideo from "@/components/pages/videos/LeadVideo";
-import VideoGrid from "@/components/pages/videos/VideoGrid";
+import VideoGrid from "@/components/common/VideoGrid";
 import { getAllVideos } from "@/lib/videoData";
 
 export default async function Videos() {
