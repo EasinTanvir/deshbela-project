@@ -42,6 +42,13 @@ const articleTags = [
   { articleId: "art-27", tagId: "tag-25" },
   { articleId: "art-28", tagId: "tag-26" },
   { articleId: "art-28", tagId: "tag-12" },
+  { articleId: "art-29", tagId: "tag-4" },
+  { articleId: "art-30", tagId: "tag-1" },
+  { articleId: "art-30", tagId: "tag-3" },
+  { articleId: "art-31", tagId: "tag-4" },
+  { articleId: "art-31", tagId: "tag-12" },
+  { articleId: "art-32", tagId: "tag-1" },
+  { articleId: "art-33", tagId: "tag-2" },
 ];
 
 export default articleTags;

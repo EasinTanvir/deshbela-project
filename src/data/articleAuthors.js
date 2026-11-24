@@ -29,6 +29,11 @@ const articleAuthors = [
   { articleId: "art-26", userId: "user-8", position: 1 },
   { articleId: "art-27", userId: "user-8", position: 1 },
   { articleId: "art-28", userId: "user-8", position: 1 },
+  { articleId: "art-29", userId: "user-2", position: 1 },
+  { articleId: "art-30", userId: "user-2", position: 1 },
+  { articleId: "art-31", userId: "user-2", position: 1 },
+  { articleId: "art-32", userId: "user-2", position: 1 },
+  { articleId: "art-33", userId: "user-1", position: 1 },
 ];
 
 export default articleAuthors;
