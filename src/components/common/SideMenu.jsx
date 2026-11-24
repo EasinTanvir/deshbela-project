@@ -1,16 +1,8 @@
 import Link from "next/link";
 
-const links = [
-  { label: "My profile", href: "/account" },
-  { label: "Saved news", href: "/account/bookmarks" },
-  { label: "My news feed", href: "/account/feed" },
-  { label: "Notifications", href: "/account/notifications" },
-  { label: "My membership", href: "/account/membership" },
-];
-
-export default function AccountMenu({ activeHref }) {
+export default function SideMenu({ label, links, activeHref }) {
   return (
-    <nav aria-label="My account">
+    <nav aria-label={label}>
       <ul className="flex gap-1 overflow-x-auto border-b border-line lg:block lg:border-0">
         {links.map((link) => {
           const isActive = link.href === activeHref;
