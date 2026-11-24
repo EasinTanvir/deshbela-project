@@ -102,3 +102,10 @@ export async function setNewsletterSubscription(user, isSubscribed) {
     });
   }
 }
+
+export async function setFavouriteCategories(userId, categoryIds) {
+  for (let index = categoryPreferences.length - 1; index >= 0; index -= 1) {
+    if (categoryPreferences[index].userId === userId) categoryPreferences.splice(index, 1);
+  }
+  categoryIds.forEach((categoryId) => categoryPreferences.push({ userId, categoryId }));
+}
