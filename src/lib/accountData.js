@@ -79,3 +79,26 @@ export async function removeBookmark(userId, articleId) {
   const index = bookmarks.findIndex((item) => item.userId === userId && item.articleId === articleId);
   if (index !== -1) bookmarks.splice(index, 1);
 }
+
+export async function setNewsletterSubscription(user, isSubscribed) {
+  const status = isSubscribed ? "SUBSCRIBED" : "UNSUBSCRIBED";
+  const subscriber = newsletterSubscribers.find(
+    (item) => item.userId === user.id || item.email.toLowerCase() === user.email.toLowerCase()
+  );
+
+  if (subscriber) {
+    subscriber.status = status;
+    subscriber.userId = user.id;
+    return;
+  }
+
+  if (isSubscribed) {
+    newsletterSubscribers.push({
+      id: `subscriber-${newsletterSubscribers.length + 1}`,
+      userId: user.id,
+      email: user.email,
+      status,
+      subscribedAt: new Date().toISOString(),
+    });
+  }
+}
