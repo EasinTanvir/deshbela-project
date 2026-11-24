@@ -126,6 +126,23 @@ const pages = [
     metaDescription: "Work with the DESHBELA newsroom. Find out who we look for and how to apply.",
     updatedAt: "2026-11-15T10:00:00+06:00",
   },
+  {
+    id: "page-7",
+    title: "Advertise With Us",
+    slug: "advertise",
+    body: [
+      "DESHBELA is read every day by people across Bangladesh and by Bangladeshis living abroad. Advertising with us puts your brand in front of readers who follow the news closely.",
+      "## Why advertise with DESHBELA",
+      "Our readers visit us many times a day for breaking news, sports, business and entertainment. Your advertisement can appear on the home page, on news pages or inside a chosen section, such as Sports or Economy, so you reach the readers who matter most to you.",
+      "## Sponsored content",
+      "Brands can also tell their story with a sponsored article. Our team helps you plan and write it. Every sponsored article is clearly marked as Sponsored, as our Editorial Policy requires.",
+      "## How it works",
+      "Send us the form below with a short note about your brand and what you want to promote. Our advertising team will reply with prices, available dates and a plan that fits your budget.",
+    ].join("\n\n"),
+    metaTitle: "Advertise With Us",
+    metaDescription: "Reach DESHBELA readers with banner ads, section ads and sponsored articles.",
+    updatedAt: "2026-11-12T10:00:00+06:00",
+  },
 ];
 
 export default pages;
