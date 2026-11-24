@@ -65,6 +65,7 @@ export default function RegisterForm() {
           <input
             type="checkbox"
             name="terms"
+            defaultChecked={values.terms === true}
             aria-invalid={errors.terms ? true : undefined}
             aria-describedby={errors.terms ? "register-terms-error" : undefined}
             className="mt-1 accent-brand"

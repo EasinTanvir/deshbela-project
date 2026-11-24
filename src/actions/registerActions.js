@@ -37,7 +37,7 @@ export async function registerReader(previousState, formData) {
   if (!agreed) errors.terms = "Please accept the Terms and Conditions.";
 
   if (Object.keys(errors).length > 0) {
-    return { status: "error", errors, values };
+    return { status: "error", errors, values: { ...values, terms: agreed } };
   }
 
   const newUser = {
