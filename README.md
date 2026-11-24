@@ -53,11 +53,12 @@ src/
     pages/podcasts/          Podcasts.jsx, the episode player and the episode list
     pages/register/, login/, loginVerify/   sign-up, login and two-factor code pages, built on common/AuthCard
     pages/account/           the five reader account pages, AccountShell (side menu) and their sections
+    pages/reporter/          the seven reporter desk pages, ReporterShell (side menu), the article form and their sections
     common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList, TagList, PageBody, ContactDetails ...
     layout/                  Header, NavLinks, Footer, MobileMenu, NewsletterForm
-  actions/                   server actions, one file per form (contact, advertise, register, login, verify, logout, profile, password, bookmark, notification, feed)
+  actions/                   server actions, one file per form (contact, advertise, register, login, verify, logout, profile, password, bookmark, notification, feed, article, media, reporterProfile)
   data/                      sample data (until the database is ready)
-  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, pageData.js, siteData.js, advertiseData.js, videoData.js, liveData.js, galleryData.js, membershipData.js, podcastData.js) and helpers
+  lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, pageData.js, siteData.js, advertiseData.js, videoData.js, liveData.js, galleryData.js, membershipData.js, podcastData.js, accountData.js, reporterData.js) and helpers
   styles/
     globals.css              main stylesheet
     theme.css                shared colours and fonts
@@ -111,14 +112,26 @@ The full set of conventions is in `CLAUDE.md`.
 | `/account/notifications` | Notifications (SRS 4.8) | Morning newsletter on or off (`NewsletterSubscriber`), breaking news alerts in this browser |
 | `/account/membership` | My membership (SRS 4.6) | Current plan with start and end date, or a link to the plans, and the payment history |
 
+| `/reporter` | Reporter dashboard (SRS 4.5) | Count of own articles by status, rejected articles with the editor's note, recent articles |
+| `/reporter/articles` | My articles (SRS 4.5) | Own articles with status, filter by status (`?status=draft`), message after saving |
+| `/reporter/articles/new` | Write an article (SRS 4.2, 4.5) | Headline, web address (slug), section, summary, story, photo from My media, tags, search title. Save as draft or send for review |
+| `/reporter/articles/[id]` | My article (SRS 4.2, 4.5) | Editor feedback (`EditorialReview`). Drafts and rejected articles can be changed and sent again; drafts can be deleted. Other articles are read only |
+| `/reporter/media` | My media (SRS 4.2) | Upload a JPG, PNG or WebP photo (up to 2 MB) with a description, list of own photos, delete photos that are not used |
+| `/reporter/profile` | My profile (SRS 4.5) | Job title, bio and photo shown on the public reporter page |
+| `/reporter/performance` | Performance (SRS 4.5) | Published stories, total and average views, approval rate, stories by views, views by section |
+
 Login now starts a session: a signed cookie (`lib/session.js`) that lasts 7 days. The header shows the reader's
 name and a Log out button. Account pages send visitors who are not logged in to `/login`. Changes made on the
 account pages are kept in memory until the server restarts; they will be saved in the database with Prisma.
 
-Next: the reporter dashboard, then the admin panel.
+Reporters land on `/reporter` after the login code. Only the Reporter role can open these pages; other users are
+sent to `/account`. New articles, uploaded photos and profile changes are kept in memory until Prisma is added.
+Uploaded photos are kept as data URLs for now; they will move to file storage later.
+
+Next: the admin panel.
 
 Login needs an `AUTH_SECRET` value in `.env.local` when the site runs with `npm start`. Sample accounts use the
-password `password123` (readers: `kamal.hossain@example.com`; staff: `rafiq.islam@example.com`). Until email sending
+password `password123` (readers: `kamal.hossain@example.com`; reporter: `nusrat.jahan@example.com`; admin: `rafiq.islam@example.com`). Until email sending
 is set up, the staff login code is printed in the terminal of `npm run dev`.
 
 ## Users
