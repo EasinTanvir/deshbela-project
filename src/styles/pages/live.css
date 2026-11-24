@@ -1,0 +1,15 @@
+@theme {
+  --color-live-badge: #b3122a;
+
+  --animate-live-blink: live-blink 1.4s ease-in-out infinite;
+
+  @keyframes live-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
+}
