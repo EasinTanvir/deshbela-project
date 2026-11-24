@@ -12,9 +12,10 @@ const reporterLinks = [
   { label: "Performance", href: "/reporter/performance" },
 ];
 
-export default function ReporterShell({ title, href, menuHref = href, children }) {
+export default function ReporterShell({ title, href, menuHref = href, parent, children }) {
   const breadcrumbItems = [{ label: "Reporter desk", href: "/reporter" }];
-  if (href !== "/reporter") breadcrumbItems.push({ label: title, href });
+  if (parent) breadcrumbItems.push(parent);
+  if (href && href !== "/reporter") breadcrumbItems.push({ label: title, href });
 
   return (
     <Container className="mt-6">
