@@ -4,6 +4,7 @@ import { randomInt } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { findUserByEmail } from "@/lib/authData";
+import { homePathFor } from "@/lib/currentUser";
 import { LOGIN_CODE_COOKIE, LOGIN_CODE_MINUTES, packLoginCode } from "@/lib/loginCode";
 import { hashPassword, verifyPassword } from "@/lib/passwords";
 import { createSession } from "@/lib/session";
@@ -58,5 +59,5 @@ export async function logIn(previousState, formData) {
   }
 
   await createSession(user.id);
-  redirect("/account");
+  redirect(homePathFor(user));
 }

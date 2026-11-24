@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { findUserById } from "@/lib/authData";
+import { homePathFor } from "@/lib/currentUser";
 import { LOGIN_CODE_COOKIE, unpackLoginCode } from "@/lib/loginCode";
 import { verifyPassword } from "@/lib/passwords";
 import { createSession } from "@/lib/session";
@@ -40,5 +41,5 @@ export async function verifyLoginCode(previousState, formData) {
   }
 
   await createSession(user.id);
-  redirect("/account");
+  redirect(homePathFor(user));
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { logOut } from "@/actions/logoutActions";
 import LoginLinks from "@/components/layout/LoginLinks";
-import { getCurrentUser } from "@/lib/currentUser";
+import { getCurrentUser, homePathFor } from "@/lib/currentUser";
 
 export default async function AccountLinks() {
   const user = await getCurrentUser();
@@ -9,7 +9,7 @@ export default async function AccountLinks() {
 
   return (
     <div className="flex items-center gap-4">
-      <Link href="/account" className="font-semibold text-ink hover:underline">
+      <Link href={homePathFor(user)} className="font-semibold text-ink hover:underline">
         <span className="sr-only">Logged in as </span>
         {user.name.split(" ")[0]}
       </Link>
