@@ -11,7 +11,7 @@ export default function LiveSchedule({ streams }) {
         <ul className="divide-y divide-line">
           {streams.map((stream) => (
             <li key={stream.id} className="flex gap-4 py-3 first:pt-0">
-              <time dateTime={stream.startsAt} className="w-20 shrink-0 text-sm">
+              <time dateTime={stream.startsAt} className="w-24 shrink-0 text-sm">
                 <span className="block font-semibold text-brand">{formatTime(stream.startsAt)}</span>
                 <span className="block text-xs text-muted">{formatDay(stream.startsAt)}</span>
               </time>
