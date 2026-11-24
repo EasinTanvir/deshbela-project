@@ -51,9 +51,10 @@ src/
     pages/membership/        Membership.jsx, plan cards, benefits and questions
     pages/membershipResult/  MembershipResult.jsx and the payment result message
     pages/podcasts/          Podcasts.jsx, the episode player and the episode list
+    pages/register/, login/, loginVerify/   sign-up, login and two-factor code pages, built on common/AuthCard
     common/                  reusable parts: NewsCard, SectionTitle, CategoryBadge, AdSlot, Breadcrumb, RankedNewsList, TagList, PageBody, ContactDetails ...
     layout/                  Header, NavLinks, Footer, MobileMenu, NewsletterForm
-  actions/                   server actions (contactActions.js and advertiseActions.js check and receive the forms)
+  actions/                   server actions, one file per form (contact, advertise, register, login, verify)
   data/                      sample data (until the database is ready)
   lib/                       data functions (homeData.js, articleData.js, categoryData.js, tagData.js, searchData.js, authorData.js, notFoundData.js, pageData.js, siteData.js, advertiseData.js, videoData.js, liveData.js, galleryData.js, membershipData.js, podcastData.js) and helpers
   styles/
@@ -99,7 +100,15 @@ The full set of conventions is in `CLAUDE.md`.
 | `/membership/result` | Membership result (SRS 4.6) | Payment result from `?status=success\|failed\|cancelled&plan=<id>`, plan summary, next step link |
 | `/podcasts` | Podcasts (SRS 4.7) | Episode player, All Episodes list with Listen buttons, About the show, ad |
 
-All public pages are built. Next: login and register, the reader account, then the reporter and admin panels.
+| `/register` | Register (SRS 4.8, 4.10) | Name, email, password, confirm password, accept terms, hidden spam trap field. Checks that the email is not used yet. The password is hashed with scrypt |
+| `/login` | Log in (SRS 4.8) | Email and password checked against the stored hash. Readers are logged in; staff go on to the code page |
+| `/login/verify` | Two-factor code (SRS 4.10) | 6-digit code sent to staff by email, valid for 10 minutes, kept in a signed cookie |
+
+Next: the reader account pages (`/account`, bookmarks, notifications, membership, feed), then the reporter and admin panels.
+
+Login needs an `AUTH_SECRET` value in `.env.local` when the site runs with `npm start`. Sample accounts use the
+password `password123` (readers: `kamal.hossain@example.com`; staff: `rafiq.islam@example.com`). Until email sending
+is set up, the staff login code is printed in the terminal of `npm run dev`.
 
 ## Users
 
