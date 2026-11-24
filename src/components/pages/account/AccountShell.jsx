@@ -22,7 +22,7 @@ export default function AccountShell({ title, href, children }) {
         <h1 className="font-serif text-4xl font-bold leading-tight text-ink">{title}</h1>
       </header>
 
-      <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:gap-0">
+      <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-0">
         <aside className="lg:col-span-3 lg:border-r lg:border-line lg:pr-8">
           <SideMenu label="My account" links={accountLinks} activeHref={href} />
         </aside>
