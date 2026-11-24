@@ -1,17 +1,9 @@
-export default function AuthorHeader({ author, total }) {
-  const initials = author.name
-    .split(" ")
-    .map((part) => part[0])
-    .join("");
+import ReporterPhoto from "@/components/common/ReporterPhoto";
 
+export default function AuthorHeader({ author, total }) {
   return (
     <header className="mt-4 flex gap-5 border-b border-line pb-6">
-      <div
-        aria-hidden="true"
-        className="flex h-20 w-20 shrink-0 items-center justify-center border border-line bg-surface font-serif text-2xl font-bold text-muted md:h-28 md:w-28 md:text-4xl"
-      >
-        {initials}
-      </div>
+      <ReporterPhoto name={author.name} photoUrl={author.photoUrl} />
 
       <div className="min-w-0">
         <h1 className="font-serif text-3xl font-bold leading-tight text-ink md:text-5xl">{author.name}</h1>
