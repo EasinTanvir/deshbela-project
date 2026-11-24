@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import { sendContactMessage } from "@/actions/contactActions";
-import FormField from "@/components/pages/contact/FormField";
+import FormField from "@/components/common/FormField";
 
 const initialState = { status: "idle", errors: {}, values: {} };
 
