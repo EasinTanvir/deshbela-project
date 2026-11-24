@@ -2,7 +2,9 @@ import Link from "next/link";
 import { Suspense } from "react";
 import Container from "@/components/common/Container";
 import TodayDate from "@/components/common/TodayDate";
+import AccountLinks from "@/components/layout/AccountLinks";
 import ActiveNavLinks from "@/components/layout/ActiveNavLinks";
+import LoginLinks from "@/components/layout/LoginLinks";
 import MobileMenu from "@/components/layout/MobileMenu";
 import NavLinks from "@/components/layout/NavLinks";
 import { getMainCategories, getSiteConfig } from "@/lib/siteData";
@@ -17,14 +19,9 @@ export default function Header() {
         <div className="border-b border-line text-xs text-muted">
           <Container className="flex h-8 items-center justify-between">
             <TodayDate />
-            <div className="flex items-center gap-4">
-              <Link href="/membership" className="font-semibold text-brand hover:underline">
-                Become a member
-              </Link>
-              <Link href="/login" className="font-semibold text-ink hover:underline">
-                Log in
-              </Link>
-            </div>
+            <Suspense fallback={<LoginLinks />}>
+              <AccountLinks />
+            </Suspense>
           </Container>
         </div>
 
